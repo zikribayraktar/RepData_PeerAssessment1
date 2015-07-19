@@ -201,7 +201,7 @@ hr {
 </head>
 
 <body>
-<p>This is the R Markdown document for the first project of the Reproducible Research MOOC course started in June 2015.</p>
+<p>This is the R Markdown document for the first project of the Reproducible Research MOOC course..</p>
 
 <p>This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.</p>
 
@@ -236,7 +236,13 @@ head(activityIN, 5)
 <p>Convert the data to table:</p>
 
 <pre><code class="r">library(data.table)
-DT &lt;- data.table(activityIN)
+</code></pre>
+
+<pre><code>## data.table 1.9.4  For help type: ?data.table
+## *** NB: by=.EACHI is now explicit. See README to restore previous behaviour.
+</code></pre>
+
+<pre><code class="r">DT &lt;- data.table(activityIN)
 </code></pre>
 
 <h3>Step 2: What is mean total number of steps taken per day?</h3>
@@ -329,6 +335,8 @@ numberOfNA
 <li><p>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</p></li>
 <li><p>Create a new dataset that is equal to the original dataset but with the missing data filled in.</p></li>
 </ul>
+
+<p>Simply loop through the data and if there is NA value replace it with the average computed earlier:</p>
 
 <pre><code class="r">naIntervals &lt;- DT[is.na(DT$steps)]$interval 
 DTfilled &lt;- DT
@@ -457,14 +465,6 @@ library(ggplot2)
 </code></pre>
 
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.1.2
-</code></pre>
-
-<pre><code>## 
-## Attaching package: &#39;ggplot2&#39;
-## 
-## The following object is masked from &#39;mtcars&#39;:
-## 
-##     mpg
 </code></pre>
 
 <pre><code class="r">p &lt;- ggplot(DTmean, aes(interval, steps)) + geom_line(linetype=1)

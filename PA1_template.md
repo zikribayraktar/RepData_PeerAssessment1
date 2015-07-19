@@ -1,11 +1,10 @@
 ---
 title: "Project 1 - Reproducible Research MOOC"
-author: "Zikri Bayraktar"
 date: "Sunday, July 19, 2015"
 output: html_document
 ---
 
-This is the R Markdown document for the first project of the Reproducible Research MOOC course started in June 2015.
+This is the R Markdown document for the first project of the Reproducible Research MOOC course..
 
 This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
@@ -42,6 +41,14 @@ Convert the data to table:
 
 ```r
 library(data.table)
+```
+
+```
+## data.table 1.9.4  For help type: ?data.table
+## *** NB: by=.EACHI is now explicit. See README to restore previous behaviour.
+```
+
+```r
 DT <- data.table(activityIN)
 ```
 
@@ -145,6 +152,7 @@ NA_Indx <- which( is.na(DT$steps), arr.ind=TRUE)
 
 - Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
+Simply loop through the data and if there is NA value replace it with the average computed earlier:
 
 
 ```r
@@ -289,15 +297,6 @@ library(ggplot2)
 ## Warning: package 'ggplot2' was built under R version 3.1.2
 ```
 
-```
-## 
-## Attaching package: 'ggplot2'
-## 
-## The following object is masked from 'mtcars':
-## 
-##     mpg
-```
-
 ```r
 p <- ggplot(DTmean, aes(interval, steps)) + geom_line(linetype=1)
 p + facet_grid(Week ~ .) + xlab("Interval") + ylab("Number of steps")
@@ -307,4 +306,3 @@ p + facet_grid(Week ~ .) + xlab("Interval") + ylab("Number of steps")
 
 
 end-of-file
-

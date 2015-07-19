@@ -1,12 +1,10 @@
 ---
-<<<<<<< HEAD
 title: "Project 1 - Reproducible Research MOOC"
-author: "Zikri Bayraktar"
 date: "Sunday, July 19, 2015"
 output: html_document
 ---
 
-This is the R Markdown document for the first project of the Reproducible Research MOOC course started in June 2015.
+This is the R Markdown document for the first project of the Reproducible Research MOOC course..
 
 This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
@@ -94,6 +92,7 @@ NA_Indx <- which( is.na(DT$steps), arr.ind=TRUE)
 
 - Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
+Simply loop through the data and if there is NA value replace it with the average computed earlier:
 
 ```{r, echo=TRUE}
 naIntervals <- DT[is.na(DT$steps)]$interval 
@@ -170,30 +169,3 @@ p + facet_grid(Week ~ .) + xlab("Interval") + ylab("Number of steps")
 
 
 end-of-file
-
-=======
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
-
-
-## Loading and preprocessing the data
-
-
-
-## What is mean total number of steps taken per day?
-
-
-
-## What is the average daily activity pattern?
-
-
-
-## Imputing missing values
-
-
-
-## Are there differences in activity patterns between weekdays and weekends?
->>>>>>> 80edf39c3bb508fee88e3394542f967dd3fd3270
